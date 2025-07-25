@@ -176,6 +176,17 @@ It reads the RGB color of a light and uses Euclidean distance to return a string
 
 ---
 
+## Extras
+`test-tool.html` is included for testing purposes
+
+It's difficult to stare at RGB codes and visualize color.
+
+This is a color picker tool that also shows the output of the logic from the light sensor
+
+This can be used to quickly plug in new color codes and track the behavior of the tool
+
+---
+
 ## Credits & Notes
 
 - All YAML styling uses clean, no-padding, no-border buttons with rounded image thumbnails
