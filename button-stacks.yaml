@@ -1,0 +1,138 @@
+- type: horizontal-stack
+  cards:
+    - type: custom:button-card
+      entity: light.bcl_local
+      entity_picture: /local/images/color_selectors/purple_lights.png
+      show_entity_picture: true
+      tap_action:
+        action: call-service
+        service: script.purple
+      styles:
+        card:
+          - background: none
+          - box-shadow: none
+          - border: none
+          - padding: 0
+          - margin: 0
+        entity_picture:
+          - width: 130px
+          - height: auto
+          - border-radius: 16px
+          - object-fit: cover
+        grid:
+          - grid-template-areas: '"i"'
+          - justify-items: center
+    - type: custom:button-card
+      entity: light.bcl_local
+      entity_picture: /local/images/color_selectors/blue_lights.png
+      show_entity_picture: true
+      tap_action:
+        action: call-service
+        service: script.lights_blue
+      styles:
+        card:
+          - background: none
+          - box-shadow: none
+          - border: none
+          - padding: 0
+          - margin: 0
+        entity_picture:
+          - width: 130px
+          - height: auto
+          - border-radius: 16px
+          - object-fit: cover
+        grid:
+          - grid-template-areas: '"i"'
+          - justify-items: center
+- type: horizontal-stack
+  cards:
+    - type: custom:button-card
+      entity: light.bcl_local
+      entity_picture: /local/images/color_selectors/green_lights.png?v=2
+      show_entity_picture: true
+      tap_action:
+        action: call-service
+        service: script.lights_green
+      styles:
+        card:
+          - background: none
+          - box-shadow: none
+          - border: none
+          - padding: 0
+          - margin: 0
+        entity_picture:
+          - width: 130px
+          - height: auto
+          - border-radius: 16px
+          - object-fit: cover
+        grid:
+          - grid-template-areas: '"i"'
+          - justify-items: center
+    - type: custom:button-card
+      entity: light.bcl_local
+      entity_picture: /local/images/color_selectors/red_lights.png?
+      show_entity_picture: true
+      tap_action:
+        action: call-service
+        service: script.lights_red
+      styles:
+        card:
+          - background: none
+          - box-shadow: none
+          - border: none
+          - padding: 0
+          - margin: 0
+        entity_picture:
+          - width: 130px
+          - height: auto
+          - border-radius: 16px
+          - object-fit: cover
+        grid:
+          - grid-template-areas: '"i"'
+          - justify-items: center
+- type: horizontal-stack
+  cards:
+    - type: custom:button-card
+      entity: light.bcl_local
+      entity_picture: /local/images/color_selectors/white_lights.png?
+      show_entity_picture: true
+      tap_action:
+        action: call-service
+        service: script.lights_white
+      styles:
+        card:
+          - background: none
+          - box-shadow: none
+          - border: none
+          - padding: 0
+          - margin: 0
+        entity_picture:
+          - width: 130px
+          - height: auto
+          - border-radius: 16px
+          - object-fit: cover
+        grid:
+          - grid-template-areas: '"i"'
+          - justify-items: center
+    - type: custom:button-card
+      entity: light.bcl_local
+      entity_picture: /local/images/color_selectors/no_lights.png
+      show_entity_picture: true
+      tap_action:
+        action: call-service
+        service: script.lights_off
+      styles:
+        card:
+          - background: none
+          - box-shadow: none
+          - border: none
+          - padding: 0
+          - margin: 0
+        entity_picture:
+          - width: 130px
+          - height: auto
+          - border-radius: 16px
+          - object-fit: cover
+        grid:
+          - grid-template-areas: '"i"'
+          - justify-items: center

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RGB Color Classifier</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            background-color: #111;
+            color: white;
+        }
+        .color-preview {
+            width: 100px;
+            height: 100px;
+            border: 2px solid white;
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+        }
+        input[type=range] {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<h1>RGB Classifier Debug Tool</h1>
+<div class="color-preview" id="colorBox"></div>
+<div>RGB: <span id="rgbVal"></span></div>
+<div>Classified As: <strong id="classification"></strong></div>
+
+<label>R: <input type="range" id="r" min="0" max="255" value="0"></label>
+<label>G: <input type="range" id="g" min="0" max="255" value="0"></label>
+<label>B: <input type="range" id="b" min="0" max="255" value="0"></label>
+
+<script>
+    const rInput = document.getElementById('r');
+    const gInput = document.getElementById('g');
+    const bInput = document.getElementById('b');
+    const colorBox = document.getElementById('colorBox');
+    const rgbVal = document.getElementById('rgbVal');
+    const classification = document.getElementById('classification');
+
+    const namedColors = {
+        red: [255, 0, 0],
+        green: [0, 255, 0],
+        blue: [0, 0, 255],
+        yellow: [255, 255, 0],
+        pink: [255, 105, 180],
+        white: [255, 255, 255],
+        cyan: [0, 255, 255],
+        purple: [128, 0, 128],
+        orange: [255, 165, 0],
+        black: [0, 0, 0],
+        lightblue: [173, 216, 230],
+        magenta: [255, 0, 255],
+        lime: [50, 205, 50],
+        skyblue: [135, 206, 235],
+        navy: [0, 0, 128],
+        midnightblue: [25, 25, 112],
+        darkblue: [0, 0, 139],
+        indigo: [75, 0, 130]
+    };
+
+    function getNearestColorName(r, g, b) {
+        let closestName = 'unknown';
+        let closestDistance = Infinity;
+
+        for (const [name, [nr, ng, nb]] of Object.entries(namedColors)) {
+            const dist = Math.sqrt((r - nr) ** 2 + (g - ng) ** 2 + (b - nb) ** 2);
+            if (dist < closestDistance) {
+                closestDistance = dist;
+                closestName = name;
+            }
+        }
+        return closestName;
+    }
+
+    function update() {
+        const r = parseInt(rInput.value);
+        const g = parseInt(gInput.value);
+        const b = parseInt(bInput.value);
+        const rgbStr = `rgb(${r}, ${g}, ${b})`;
+
+        colorBox.style.backgroundColor = rgbStr;
+        rgbVal.textContent = rgbStr;
+        classification.textContent = getNearestColorName(r, g, b);
+    }
+
+    rInput.addEventListener('input', update);
+    gInput.addEventListener('input', update);
+    bInput.addEventListener('input', update);
+
+    update(); // Initial call
+</script>
+</body>
+</html>
+
+

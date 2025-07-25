@@ -1,0 +1,82 @@
+- type: custom:mod-card
+  card_mod:
+    style: |
+      :host {
+        {% set state = states('sensor.living_room_light_sensor') %}
+        --blue-opacity: {{ '1' if state == 'blue' else '0' }};
+        --blue-z: {{ '3' if state == 'blue' else '1' }};
+        --purple-opacity: {{ '1' if state == 'purple' else '0' }};
+        --purple-z: {{ '3' if state == 'purple' else '1' }};
+        --red-opacity: {{ '1' if state == 'red' else '0' }};
+        --red-z: {{ '3' if state == 'red' else '1' }};
+        --green-opacity: {{ '1' if state == 'green' else '0' }};
+        --green-z: {{ '3' if state == 'green' else '1' }};
+        --white-opacity: {{ '1' if state == 'white' else '0' }};
+        --white-z: {{ '3' if state == 'white' else '1' }};
+        --off-opacity: {{ '1' if state == 'off' else '0' }};
+        --off-z: {{ '3' if state == 'off' else '1' }};
+      }
+  card:
+    type: picture-elements
+    image: /local/images/blank.png
+    elements:
+      - type: image
+        image: /local/images/rooms/living_room_blue.png
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          transform: translate(-50%, -50%)
+          opacity: var(--blue-opacity)
+          z-index: var(--blue-z)
+          transition: opacity 0.5s ease-in-out
+      - type: image
+        image: /local/images/rooms/living_room_indigo.png
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          transform: translate(-50%, -50%)
+          opacity: var(--purple-opacity)
+          z-index: var(--purple-z)
+          transition: opacity 0.5s ease-in-out
+      - type: image
+        image: /local/images/rooms/living_room_red.png
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          transform: translate(-50%, -50%)
+          opacity: var(--red-opacity)
+          z-index: var(--red-z)
+          transition: opacity 0.5s ease-in-out
+      - type: image
+        image: /local/images/rooms/living_room_green.png
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          transform: translate(-50%, -50%)
+          opacity: var(--green-opacity)
+          z-index: var(--green-z)
+          transition: opacity 0.5s ease-in-out
+      - type: image
+        image: /local/images/rooms/living_room_lights_on.png
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          transform: translate(-50%, -50%)
+          opacity: var(--white-opacity)
+          z-index: var(--white-z)
+          transition: opacity 0.5s ease-in-out
+      - type: image
+        image: /local/images/rooms/living_room_lights_off.png
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          transform: translate(-50%, -50%)
+          opacity: var(--off-opacity)
+          z-index: var(--off-z)
+          transition: opacity 0.5s ease-in-out

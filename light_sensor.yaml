@@ -1,0 +1,49 @@
+template:
+  - sensor:
+      - name: "Living Room Light Sensor"
+        unique_id: living_room_light_sensor
+        state: >
+          {% set color = state_attr('light.tv_light_1', 'rgb_color') %}
+          {% if color is none %}
+            off
+          {% elif color | length == 3 and color[0] == 0 and color[1] == 0 and color[2] == 0 %}
+            off
+          {% elif color | length == 3 %}
+            {% set r = color[0] | int %}
+            {% set g = color[1] | int %}
+            {% set b = color[2] | int %}
+            {% set named_colors = {
+              'red': [255, 0, 0],
+              'green': [0, 255, 0],
+              'blue': [0, 0, 255],
+              'yellow': [255, 255, 0],
+              'pink': [255, 105, 180],
+              'white': [255, 255, 255],
+              'cyan': [0, 255, 255],
+              'purple': [90, 0, 200],
+              'orange': [255, 165, 0],
+              'black': [0, 0, 0],
+              'lightblue': [173, 216, 230],
+              'magenta': [255, 0, 255],
+              'lime': [50, 205, 50],
+              'skyblue': [135, 206, 235],
+              'navy': [0, 0, 128],
+              'midnightblue': [25, 25, 112],
+              'darkblue': [0, 0, 139],
+              'indigo': [75, 0, 130]
+            } %}
+            {% set ns = namespace(closest_name='unknown', closest_distance=999999) %}
+            {% for name, val in named_colors.items() %}
+              {% set dr = r - val[0] %}
+              {% set dg = g - val[1] %}
+              {% set db = b - val[2] %}
+              {% set dist = (dr * dr + dg * dg + db * db) %}
+              {% if dist < ns.closest_distance %}
+                {% set ns.closest_distance = dist %}
+                {% set ns.closest_name = name %}
+              {% endif %}
+            {% endfor %}
+            {{ ns.closest_name }}
+          {% else %}
+            unavailable
+          {% endif %}
