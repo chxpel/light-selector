@@ -4,6 +4,8 @@ A complete image-based light selection interface for Home Assistant dashboards. 
 
 ---
 
+![img.png](img.png)
+
 ## Overview
 
 This tool enables:
